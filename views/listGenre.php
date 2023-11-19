@@ -25,7 +25,7 @@ $tab = $g->affichGenres();
             <td><?= $genre['idGenre']; ?></td>
             <td><?= $genre['nom']; ?></td>
                  <td align="center">
-                <form method="POST" action="updateJoueur.php">
+                <form method="POST" action="updateGenre.php">
                     <input type="submit" name="update" value="Update">
                     <input type="hidden" value=<?PHP echo $genre['idGenre']; ?> name="idGenre">
                 </form>

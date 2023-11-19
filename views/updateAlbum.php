@@ -33,7 +33,9 @@ if (
         !empty($_POST["image"]) &&
         !empty($_POST["genre"])
     ) {
-        
+        foreach ($_POST as $key => $value) {
+            echo "Key: $key, Value: $value<br>";
+        }
         $joueur = new Album(
             null,
             $_POST['titre'],

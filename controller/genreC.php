@@ -48,8 +48,44 @@ class GenreC {
         }
     }
 
+    
+    function showGenre($id)
+    {
+        $sql = "SELECT * from Genre where idGenre = $id";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+            $joueur = $query->fetch();
+            return $joueur;
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
 
 
+
+    function updateGenre($joueur, $id)
+    {   
+        try {
+            $db = config::getConnexion();
+            $query = $db->prepare(
+                'UPDATE Genre SET 
+                    nom = :nom
+                    WHERE idGenre= :idGenre'
+            );
+            
+            $query->execute([
+                'idGenre' => $id,
+                'nom' => $joueur->getNom(),
+               
+            ]);
+            
+            echo $query->rowCount() . " records UPDATED successfully <br>";
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
 
  
 

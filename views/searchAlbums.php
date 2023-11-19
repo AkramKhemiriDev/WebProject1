@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$genres = $genreC->afficheGenres();
+$genres = $genreC->affichGenres();
 ?>
 <!DOCTYPE html>
 <head>

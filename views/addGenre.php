@@ -1,6 +1,6 @@
 <?php
 
-require_once  '../Controller/GenreC.php';
+include  '../Controller/GenreC.php';
 require_once  '../model/Genre.php';
 
 $error = "";
