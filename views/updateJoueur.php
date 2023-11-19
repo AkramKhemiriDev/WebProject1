@@ -1,7 +1,7 @@
 <?php
-
-include '../Controller/JoueurC.php';
-include '../model/Joueur.php';
+require_once
+require_once '../Controller/JoueurC.php';
+require_once '../model/Joueur.php';
 $error = "";
 
 // create client
