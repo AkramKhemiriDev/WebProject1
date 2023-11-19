@@ -1,8 +1,8 @@
 <?php
-include "../controller/GenreC.php";
+require_once "../controller/GenreC.php";
 
 $g = new GenreC();
-$tab = $g->afficheGenres();
+$tab = $g->affichGenres();
 
 ?>
 <center>
@@ -31,7 +31,7 @@ $tab = $g->afficheGenres();
                 </form>
             </td>
             <td>
-                <a href="deleteJoueur.php?id=<?php echo $genre['idGenre']; ?>">Delete</a>
+                <a href="deleteGenre.php?id=<?php echo $genre['idGenre']; ?>">Delete</a>
             </td>
         </tr>
     <?php

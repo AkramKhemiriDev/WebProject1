@@ -34,6 +34,21 @@ class GenreC {
         }
     }
 
+    function deleteGenre($ide)
+    {
+        $sql = "DELETE FROM Genre WHERE idGenre = :id";
+        $db = config::getConnexion();
+        $req = $db->prepare($sql);
+        $req->bindValue(':id', $ide);
+
+        try {
+            $req->execute();
+        } catch (Exception $e) {
+            die('Error:' . $e->getMessage());
+        }
+    }
+
+
 
 
  
@@ -52,18 +67,17 @@ class GenreC {
         }
     }
 
-    public function afficheGenres() {
+
+    public function afficheAlbums2() {
+        $db = config::getConnexion();
+        $sql = "SELECT * FROM Album";
         try {
-            $pdo = config::getConnexion();
-            $query = $pdo->prepare("SELECT * FROM genre");
-            $query->execute();
-            return $query->fetchAll();
-        } catch (PDOException $e) {
-            echo $e->getMessage();
+            $liste = $db->query($sql);
+            return $liste;
+        } catch (Exception $e) {
+            die('Error:' . $e->getMessage());
         }
     }
-
-
 
     function addAlbum($album)
     {
@@ -82,5 +96,65 @@ class GenreC {
             echo 'Error: ' . $e->getMessage();
         }
     }
+
+
+
+
+    function deleteAlbum($ide)
+    {
+        $sql = "DELETE FROM Album WHERE idAlbum = :id";
+        $db = config::getConnexion();
+        $req = $db->prepare($sql);
+        $req->bindValue(':id', $ide);
+
+        try {
+            $req->execute();
+        } catch (Exception $e) {
+            die('Error:' . $e->getMessage());
+        }
+    }
+
+
+    function showAlbum($id)
+    {
+        $sql = "SELECT * from Album where idAlbum = $id";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+            $joueur = $query->fetch();
+            return $joueur;
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
+
+
+    function updateAlbum($j, $ide)
+    {   
+       
+            $db = config::getConnexion();
+            $query = $db->prepare(
+                'UPDATE Album SET 
+                    titre = :titre, 
+                    prix = :prix, 
+                   genre = :genre
+                WHERE id= :idAlbum'
+            );
+            try {
+            $query->execute([
+                'idAlbum' => $ide,
+                'titre' => $j->getTitre(),
+                'prix' => $j->getPrix(),
+               'genre' => $j->getGenre(),
+            ]);
+            
+            echo $query->rowCount() . " records UPDATED successfully <br>";
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
+
+
 
 }

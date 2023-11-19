@@ -1,5 +1,5 @@
 <?php
-require_once "../controller/genreC.php";
+include "../controller/genreC.php";
 
 $genreC = new GenreC();
 

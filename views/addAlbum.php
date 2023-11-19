@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$genres = $genreC->afficheGenres();
+$genres = $genreC->affichGenres();
 
 
 
@@ -67,7 +67,7 @@ if (
 </head>
 
 <body>
-    <a href="listJoueurs.php">Back to list </a>
+    <a href="listAlbum.php">Back to list </a>
     <hr>
 
     <div id="error">
